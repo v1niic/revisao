@@ -8,73 +8,215 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Bootstrap Class - Geração Tech 4.0</title>
     <style>
-        /* Toggle do tema fixado no canto inferior direito */
+        :root {
+            --page-bg: linear-gradient(180deg, #f8f9fa 0%, #eef2ff 100%);
+            --text-color: #111827;
+            --panel-bg: #ffffff;
+            --panel-border: rgba(0, 0, 0, 0.08);
+            --panel-shadow: rgba(0, 0, 0, 0.08);
+            --muted-text: #6c757d;
+        }
+
+        html[data-bs-theme="dark"] {
+            --page-bg: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+            --text-color: #f8fafc;
+            --panel-bg: #1f2937;
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --panel-shadow: rgba(0, 0, 0, 0.35);
+            --muted-text: #cbd5e1;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-color);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .dashboard-shell {
+            max-width: 1180px;
+            margin: 2rem auto;
+            padding: 0 1rem 3rem;
+        }
+
+        .cards-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            width: 18rem;
+            min-height: 220px;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            box-shadow: 0 0.25rem 0.75rem var(--panel-shadow);
+            color: var(--text-color);
+        }
+
+        .card-body,
+        .card-title,
+        .card-text {
+            color: var(--text-color);
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .status-table {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .table,
+        .table th,
+        .table td,
+        .form-control,
+        .form-label,
+        .alert,
+        .bg-body-tertiary,
+        .border,
+        .shadow-sm {
+            color: var(--text-color);
+        }
+
+        .form-control,
+        .border,
+        .table,
+        .bg-body-tertiary {
+            background-color: var(--panel-bg);
+            border-color: var(--panel-border);
+        }
+
+        .text-muted {
+            color: var(--muted-text) !important;
+        }
+
         #themeToggle {
-            position: fixed;
-            bottom: 20px;
-            right: 15px;
-            z-index: 1000;
+            margin-left: 1rem;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <h1>Meu Dashboard</h1>
-        <p>Gerencie suas informações</p>
-        <div>Você possui novas notificações</div>
-        <div>
-            <div>
-                <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Geração Tech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Links</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mais
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ação</a></li>
+                            <li><a class="dropdown-item" href="#">Outra ação</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Alguma coisa aqui</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Desativado</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                </form>
+                <button id="themeToggle" class="btn btn-outline-secondary" type="button" aria-label="Alternar tema">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-shell">
+        <div class="text-center mt-4 mb-3">
+            <h1 class="mb-3">Meu Dashboard</h1>
+            <p class="text-muted mb-3">Gerencie suas informações</p>
+            <div class="alert alert-warning d-inline-block mb-0" role="alert">
+                Você possui novas notificações
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <div>
-                        <h5>Perfil</h5>
-                        <p>Gerencie seus dados pessoais</p>
-                        <button>Acessar</button>
+                        <h5 class="card-title">Perfil</h5>
+                        <p class="card-text">Gerencie seus dados pessoais</p>
                     </div>
+                    <button class="btn btn-outline-warning mt-3">Acessar</button>
                 </div>
             </div>
-            <div>
-                <div>
+
+            <div class="card text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <div>
-                        <h5>Relatórios</h5>
-                        <p>Consulte seus resultados</p>
-                        <button>Visualizar</button>
+                        <h5 class="card-title">Relatórios</h5>
+                        <p class="card-text">Consulte seus resultados</p>
                     </div>
+                    <button class="btn btn-outline-success mt-3">Visualizar</button>
                 </div>
             </div>
-            <div>
-                <div>
+
+            <div class="card text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <div>
-                        <h5>Configurações</h5>
-                        <p>Personalize sua conta</p>
-                        <button>Configurar</button>
+                        <h5 class="card-title">Configurações</h5>
+                        <p class="card-text">Personalize sua conta</p>
                     </div>
+                    <button class="btn btn-outline-info mt-3">Configurar</button>
                 </div>
             </div>
         </div>
-        <h2>Contato</h2>
-        <div>
-            <div>
-                <form>
-                    <div>
-                        <label>Nome</label>
-                        <input>
+
+        <div class="contact-grid">
+            <div class="w-100" style="max-width: 420px;">
+                <h2 class="text-center mb-3">Contato</h2>
+                <form class="border rounded p-4 bg-body-tertiary shadow-sm">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Seu nome">
                     </div>
-                    <div>
-                        <label>E-mail</label>
-                        <input>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
                     </div>
-                    <div>
-                        <label>Mensagem</label>
-                        <textarea></textarea>
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label">Mensagem</label>
+                        <textarea class="form-control" id="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
                     </div>
-                    <button>Enviar</button>
+                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
                 </form>
             </div>
-            <div>
-                <h3>Status dos canais de atendimento</h3>
-                <div>
-                    <table>
+
+            <div class="w-100" style="max-width: 480px;">
+                <h3 class="text-center mb-3">Status dos canais de atendimento</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle status-table">
                         <thead>
                             <tr>
                                 <th>Canal</th>
@@ -84,87 +226,57 @@
                         <tbody>
                             <tr>
                                 <td>WhatsApp</td>
-                                <td><span>Online</span></td>
+                                <td><span class="badge bg-success">Online</span></td>
                             </tr>
                             <tr>
                                 <td>E-mail</td>
-                                <td><span>Em análise</span></td>
+                                <td><span class="badge bg-warning text-dark">Em análise</span></td>
                             </tr>
                             <tr>
                                 <td>Suporte</td>
-                                <td><span>Agendado</span></td>
+                                <td><span class="badge bg-info text-dark">Agendado</span></td>
                             </tr>
                             <tr>
                                 <td>Atendimento</td>
-                                <td><span>Indisponível</span></td>
+                                <td><span class="badge bg-secondary">Indisponível</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <h3>Redes sociais</h3>
-        <div>
-            <a 
-                href="https://github.com/carloeira" 
-                target="_blank" 
-                rel="noopener noreferrer">
-                GitHub
-            </a>
-            <a 
-                href="https://linkedin.com/in/carloeira" 
-                target="_blank" 
-                rel="noopener noreferrer">
-                LinkedIn
-            </a>
-            <a 
-                href="https://instagram.com/ielceara" 
-                target="_blank" 
-                rel="noopener noreferrer">
-                Instagram
-            </a>
+
+        <div class="mt-5 text-center">
+            <h3 class="mb-3">Redes sociais</h3>
+            <div class="social-links">
+                <a class="btn btn-outline-dark" href="https://github.com/v1niic" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/viniciusdevfllstk" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="btn btn-outline-danger" href="https://instagram.com/ielceara" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
         </div>
     </div>
-
-    <button 
-        id="themeToggle" 
-        class="btn btn-outline-success ms-2" 
-        type="button">
-    </button>
 
     <script>
         const themeToggle = document.getElementById("themeToggle");
 
-        // Verifica se existe um tema salvo
         let theme = localStorage.getItem("theme");
 
-        // Se não existir, usa o tema preferido como claro
         if (!theme) {
-            theme = window.matchMedia("(prefers-color-scheme: light)").matches
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
                 ? "dark"
                 : "light";
         }
 
-        // Função para aplicar o tema
         function applyTheme() {
             document.documentElement.setAttribute("data-bs-theme", theme);
-
-            if (theme === "dark") {
-                themeToggle.textContent = "🌙";
-            } else {
-                themeToggle.textContent = "☀️";
-            }
+            themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
         }
 
-        // Aplica o tema ao abrir a página
         applyTheme();
 
-        // Troca o tema ao clicar
         themeToggle.addEventListener("click", () => {
             theme = theme === "light" ? "dark" : "light";
-
             localStorage.setItem("theme", theme);
-
             applyTheme();
         });
     </script>
